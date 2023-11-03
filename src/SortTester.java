@@ -23,7 +23,11 @@ public class SortTester {
   // +-------+-------------------------------------------------------
   // | Tests |
   // +-------+
-
+  /*
+   * NOTE: this is a bank of tests that I have written to test my different sort
+   * methods. This
+   * file does not test them, but simply contains them
+   */
   @Test
   public void fakeTest() {
     assertTrue(true);
@@ -45,4 +49,43 @@ public class SortTester {
     assertArrayEquals(original, expected);
   } // orderedStringTest
 
+  @Test
+  public void sameStringTest() {
+    String[] original = { "delta", "delta", "delta" };
+    String[] expected = { "delta", "delta", "delta" };
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  } // orderedStringTest
+
+  @Test
+  public void emptyStringTest() {
+    String[] original = { "", "", "" };
+    String[] expected = { "", "", "" };
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  } // orderedStringTest
+
+  @Test
+  public void similarStringTest() {
+    String[] original = { "delte", "dalta", "dolto" };
+    String[] expected = { "dalta", "delte", "dolto" };
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  } // orderedStringTest
+
+  @Test
+  public void nullStringTest() {
+    String[] original = { null, null, null };
+    String[] expected = { null, null, null };
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  } // orderedStringTest
+
+  @Test
+  public void mixedStringTest() {
+    String[] original = { "", null, "delta" };
+    String[] expected = { "delta", "", null };
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  } // orderedStringTest
 } // class SortTester
