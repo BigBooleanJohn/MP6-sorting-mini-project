@@ -40,4 +40,17 @@ public class MergeSortTester extends SortTester {
     assertArrayEquals(original, expected);
   } // orderedStringTest
 
+  /*
+   * this is to test if we have an input of length 0. in my firat attemp at this
+   * MP this gave a stack overflow, so I am
+   * inserting ths test for good measure
+   */
+  @Test
+  public void LengthZeroStringTest() {
+    String[] original = {};
+    String[] expected = {};
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  } // orderedStringTest
+
 } // class MergeSortTester

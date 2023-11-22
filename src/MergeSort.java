@@ -34,8 +34,8 @@ public class MergeSort implements Sorter {
 
   /*
    * this function will merge together two arrays, left and right, into the main
-   * array, in a
-   * sorted fashion.
+   * array, in a sorted fashion, adding in any leftover values from either array
+   * if they exist.
    * 
    * @pre: left and right are valid arrays, can be empty. order is a valid
    * implementation of the abstract
@@ -47,7 +47,7 @@ public class MergeSort implements Sorter {
     int leftIndex = 0;
     int rightIndex = 0;
     int valsIndex = 0;
-    while (leftIndex < left.length && rightIndex < right.length) {// while we have values in both arrays
+    while (leftIndex < left.length && rightIndex < right.length) {
       if (order.compare(left[leftIndex], right[rightIndex]) <= 0) {
         values[valsIndex] = left[leftIndex];
         valsIndex++;
@@ -58,14 +58,14 @@ public class MergeSort implements Sorter {
         rightIndex++;
       }
     }
-    if (rightIndex < right.length) {// in case any values are left over in the right array
+    if (rightIndex < right.length) {
       while (rightIndex < right.length) {
         values[valsIndex] = right[rightIndex];
         valsIndex++;
         rightIndex++;
       }
     }
-    if (leftIndex < left.length) {// in case any values are left over in the left array
+    if (leftIndex < left.length) {
       while (leftIndex < left.length) {
         values[valsIndex] = left[leftIndex];
         valsIndex++;
@@ -87,7 +87,7 @@ public class MergeSort implements Sorter {
   @Override
   public <T> void sort(T[] values, Comparator<? super T> order) {
 
-    if (values.length == 1) {
+    if (values.length <= 1) {
       return;
     }
     int middle = values.length / 2;

@@ -4,6 +4,9 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
+/*a tester of my own sorter
+ * @Author: John Miller
+ */
 public class JohnTester extends SortTester {
     // CONSTRUCTOR/////////
     public JohnTester() {
@@ -32,6 +35,19 @@ public class JohnTester extends SortTester {
     public void orderedStringTest() {
         String[] original = { "alpha", "bravo", "charlie", "delta", "foxtrot" };
         String[] expected = original.clone();
+        sorter.sort(original, (x, y) -> x.compareTo(y));
+        assertArrayEquals(original, expected);
+    } // orderedStringTest
+
+    /*
+     * this is to test if we have an input of length 0. in my firat attemp at this
+     * MP this gave a stack overflow, so I am
+     * inserting ths test for good measure
+     */
+    @Test
+    public void LengthZeroStringTest() {
+        String[] original = {};
+        String[] expected = {};
         sorter.sort(original, (x, y) -> x.compareTo(y));
         assertArrayEquals(original, expected);
     } // orderedStringTest
